@@ -1,9 +1,10 @@
 import requests
+import os
 
 # Importing Twilio for SMS integration
 from twilio.rest import Client
-account_sid = "ACd4a57246f080e3ae542c65ffeaf7a514"
-auth_token = "f9c0541d5e30766dff114fd1861ae02b"
+account_sid = os.environ.get("account_sid")
+auth_token = os.environ.get("auth_token")
 
 # Getting data from sheets
 API_Sheety_Get = "https://api.sheety.co/ba75963e38b670a666f64c92359f350b/copyOfFlightDeals/prices"
@@ -52,5 +53,5 @@ for key in data_dictionary:
                  f'\nPrice: ${deal_price} \nDeparts: {date_of_departure} '
                  f'\nBook It:https://tequila.kiwi.com/portal/docs/user_guides/booking_api__general_information_',
             from_='+15737314325',
-            to='+15624450411'  # Recipients Phone Number
+            to='+15624450411' # Recipients Phone Number
         )
